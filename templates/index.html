@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for post in post_list %}
+    <article class="card">
+      <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+      <p class="meta">{{ post.author }} · {{ post.created_at|date:"d/m/Y" }}</p>
+      <p>{{ post.content|truncatewords:40 }}</p>
+      <p><a href="{% url 'post_detail' post.slug %}">Ler mais →</a></p>
+    </article>
+  {% empty %}
+    <div class="card"><p>Nenhum post publicado ainda.</p></div>
+  {% endfor %}
+
+  {% if is_paginated %}
+    <nav class="paginacao">
+      {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">← Mais novos</a>{% else %}<span></span>{% endif %}
+      {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Mais antigos →</a>{% endif %}
+    </nav>
+  {% endif %}
+{% endblock %}
