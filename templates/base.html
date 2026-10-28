@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Portfólio{% endblock %} | Adryan Szenczuk</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Segoe UI", Arial, sans-serif; background: #f4f6f9; color: #1f2d3d; line-height: 1.6; }
+    a { color: #2f6fdf; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #1f2d3d; color: #fff; padding: 24px 0; }
+    header a { color: #fff; }
+    header h1 { font-size: 26px; }
+    header p { color: #b8c4d1; font-size: 14px; }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+    .layout { display: grid; grid-template-columns: 1fr 280px; gap: 32px; margin: 32px auto; }
+    .card { background: #fff; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .card h2 { font-size: 22px; margin-bottom: 4px; }
+    .meta { color: #6b7a8a; font-size: 13px; margin-bottom: 12px; }
+    .content { white-space: pre-line; }
+    .paginacao { display: flex; justify-content: space-between; }
+    footer { text-align: center; color: #6b7a8a; font-size: 13px; padding: 24px 0; }
+    @media (max-width: 768px) { .layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="{% url 'index' %}">Portfólio do Adryan</a></h1>
+      <p>Projetos e anotações de estudo em Python e Django</p>
+    </div>
+  </header>
+
+  <div class="container layout">
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    {% include "sidebar.html" %}
+  </div>
+
+  <footer>Adryan Szenczuk · EBAC Full Stack Python</footer>
+</body>
+</html>

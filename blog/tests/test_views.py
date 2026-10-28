@@ -15,6 +15,6 @@ def test_url_da_home(client):
 
 @pytest.mark.django_db
 def test_rota_inexistente_da_404(client):
-    response = client.get("/qualquer-coisa/")
+    response = client.get("/qualquer/coisa/")
 
     assert response.status_code == 404

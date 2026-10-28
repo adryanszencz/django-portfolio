@@ -1,0 +1,16 @@
+<aside>
+  <div class="card">
+    <h3>Sobre</h3>
+    <p>Sou o Adryan, estudante de desenvolvimento Full Stack Python. Aqui ficam os meus projetos e anotações.</p>
+  </div>
+  <div class="card">
+    <h3>Posts recentes</h3>
+    <ul style="list-style: none">
+      {% for recent in recent_posts %}
+        <li><a href="{% url 'post_detail' recent.slug %}">{{ recent.title }}</a></li>
+      {% empty %}
+        <li>Nenhum post ainda.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</aside>
